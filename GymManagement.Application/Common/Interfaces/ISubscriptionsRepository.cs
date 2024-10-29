@@ -1,4 +1,5 @@
 ﻿using GymManagement.Domain;
+using GymManagement.Domain.Subscriptions;
 
 namespace GymManagement.Application.Common.Interfaces;
 

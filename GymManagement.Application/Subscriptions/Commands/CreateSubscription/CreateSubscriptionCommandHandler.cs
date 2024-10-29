@@ -1,6 +1,7 @@
 ﻿using ErrorOr;
 using GymManagement.Application.Common.Interfaces;
 using GymManagement.Domain;
+using GymManagement.Domain.Subscriptions;
 using MediatR;
 
 namespace GymManagement.Application.Subscriptions.Commands.CreateSubscription;

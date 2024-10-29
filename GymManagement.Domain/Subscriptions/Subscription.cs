@@ -1,7 +1,10 @@
-﻿namespace GymManagement.Domain;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GymManagement.Domain.Subscriptions;
 
 public class Subscription
 {
-    public Guid Id;
-    public string Type = "Free";
+    [Key]
+    public Guid Id { get; set; }
+    public string Type { get; set; } = "Free";
 }
