@@ -1,0 +1,3 @@
+GET http://localhost:5128/weatherforecast
+
+

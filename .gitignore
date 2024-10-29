@@ -7,3 +7,14 @@
 /GymManagement.Infrastructure/bin
 /GymManagement.Domain/obj
 /GymManagement.Domain/bin
+
+
+# Rider
+.idea/
+
+# Vscode
+.vscode/
+
+# VS
+.vs/
+
