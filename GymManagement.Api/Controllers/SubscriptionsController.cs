@@ -18,8 +18,8 @@ public class SubscriptionsController(ISender requestSender)
         var createSubscriptionResult = await requestSender.Send(command);
 
         return createSubscriptionResult.MatchFirst(
-            subscriptionId => Ok(new SubscriptionResponse
-                (subscriptionId, request.SubscriptionType)),
+            subscription => Ok(new SubscriptionResponse
+                (subscription.Id, request.SubscriptionType)),
             error => Problem(error.Description)
         );
     }
