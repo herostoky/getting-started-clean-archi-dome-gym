@@ -17,12 +17,10 @@ public class SubscriptionsController(ISender requestSender)
         var command = new CreateSubscriptionCommand(request.SubscriptionType.ToString(), request.AdminId);
         var createSubscriptionResult = await requestSender.Send(command);
 
-        if (createSubscriptionResult.IsError)
-        {
-            return Problem();
-        }
-        
-        var response = new SubscriptionResponse(createSubscriptionResult.Value, request.SubscriptionType);
-        return Ok(response);
+        return createSubscriptionResult.MatchFirst(
+            subscriptionId => Ok(new SubscriptionResponse
+                (subscriptionId, request.SubscriptionType)),
+            error => Problem(error.Description)
+        );
     }
 }
