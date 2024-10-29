@@ -1,0 +1,14 @@
+POST {{GymManagement.Api_HostAddress}}/subscriptions
+Content-type: application/json
+
+{
+  "SubscriptionType": "Free", // "Free", "Starter", "Pro"
+  "AdminId": {{GymManagement.CreateSubscription.AdminId}}
+}
+
+/*
+# {
+#   "Id": AdminId
+#   "SubscriptionType": "Free", // "Free", "Starter", "Pro"
+# }
+*/
