@@ -6,13 +6,13 @@ namespace GymManagement.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class SubscriptionsController(ISubscriptionsService subscriptionsService)
+public class SubscriptionsController(ISubscriptionsWriteService subscriptionsWriteService)
     : ControllerBase
 {
     [HttpPost]
     public IActionResult CreateSubscription(CreateSubscriptionRequest request)
     {
-        var subscriptionId = subscriptionsService.CreateSubscription(request.SubscriptionType.ToString(), request.AdminId);
+        var subscriptionId = subscriptionsWriteService.CreateSubscription(request.SubscriptionType.ToString(), request.AdminId);
         var response = new SubscriptionResponse(subscriptionId, request.SubscriptionType);
         return Ok(response);
     }
