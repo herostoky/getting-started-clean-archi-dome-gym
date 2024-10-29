@@ -5,8 +5,7 @@ using MediatR;
 
 namespace GymManagement.Application.Subscriptions.Commands.CreateSubscription;
 
-public class CreateSubscriptionCommandHandler(ISubscriptionsRepository subscriptionsRepository,
-    IUnitOfWork unitOfWork)
+public class CreateSubscriptionCommandHandler(ISubscriptionsRepository subscriptionsRepository)
     : IRequestHandler<CreateSubscriptionCommand, ErrorOr<Subscription>>
 {
     public async Task<ErrorOr<Subscription>> Handle(CreateSubscriptionCommand request, CancellationToken cancellationToken)
@@ -20,7 +19,7 @@ public class CreateSubscriptionCommandHandler(ISubscriptionsRepository subscript
         // Add it to database
         await subscriptionsRepository.AddSubscriptionAsync(subscription);
 
-        await unitOfWork.CommitChangesAsync();
+        // await unitOfWork.CommitChangesAsync();
         
         // Return subscription
         return subscription;

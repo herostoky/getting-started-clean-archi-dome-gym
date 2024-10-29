@@ -1,4 +1,6 @@
-﻿using GymManagement.Application.Services;
+﻿using GymManagement.Application.Common.Interfaces;
+using GymManagement.Application.Services;
+using GymManagement.Infrastructure.Subscriptions.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GymManagement.Infrastructure;
@@ -7,7 +9,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
-        services.AddScoped<ISubscriptionsWriteService, SubscriptionsWriteService>();
+        services.AddScoped<ISubscriptionsRepository, SubscriptionsRepository>();
         return services;
     }
 }
