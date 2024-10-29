@@ -11,4 +11,9 @@ public class SubscriptionsRepository: ISubscriptionsRepository
         _subscriptions.Add(subscription);
         return Task.CompletedTask;
     }
+    public Task<Subscription?> GetByIdAsync(Guid id)
+    {
+        return 
+            Task.FromResult(_subscriptions.FirstOrDefault(subscription => subscription.Id == id));
+    }
 }

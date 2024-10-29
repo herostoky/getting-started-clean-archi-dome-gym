@@ -1,5 +1,6 @@
 ﻿using GymManagement.Application.Services;
 using GymManagement.Application.Subscriptions.Commands.CreateSubscription;
+using GymManagement.Application.Subscriptions.Queries.GetSubscription;
 using GymManagement.Contracts.Subscriptions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,19 @@ public class SubscriptionsController(ISender requestSender)
         return createSubscriptionResult.MatchFirst(
             subscription => Ok(new SubscriptionResponse
                 (subscription.Id, request.SubscriptionType)),
+            error => Problem(error.Description)
+        );
+    }
+    [HttpGet]
+    public async Task<IActionResult> GetSubscriptionById(Guid subscriptionId)
+    {
+        var command = new GetSubscriptionQuery(subscriptionId);
+        var subscriptionResult = await requestSender.Send(command);
+
+        return subscriptionResult.MatchFirst(
+            subscription => Ok(new SubscriptionResponse
+                (subscription.Id, 
+                    Enum.Parse<SubscriptionType>(subscription.Type))),
             error => Problem(error.Description)
         );
     }
