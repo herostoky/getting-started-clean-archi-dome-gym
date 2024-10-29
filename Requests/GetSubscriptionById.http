@@ -1,4 +1,4 @@
-﻿@SubscriptionId=b75246b3-c0e8-49ec-a74f-abf873b52e8b
+﻿@SubscriptionId=65342d9d-3ee4-4d24-a5d4-eb07fbb9d7c8
 
 GET {{GymManagement.Api_HostAddress}}/Subscriptions?subscriptionId={{SubscriptionId}}
 Content-type: application/json
