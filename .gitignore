@@ -7,7 +7,8 @@
 /GymManagement.Infrastructure/bin
 /GymManagement.Domain/obj
 /GymManagement.Domain/bin
-
+/GymManagement.Contracts/obj
+/GymManagement.Contracts/bin
 
 # Rider
 .idea/
