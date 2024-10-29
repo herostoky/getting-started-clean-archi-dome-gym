@@ -15,9 +15,14 @@ public class SubscriptionsController(ISender requestSender)
     public async Task<IActionResult> CreateSubscription(CreateSubscriptionRequest request)
     {
         var command = new CreateSubscriptionCommand(request.SubscriptionType.ToString(), request.AdminId);
-        var subscriptionId = await requestSender.Send(command);
+        var createSubscriptionResult = await requestSender.Send(command);
+
+        if (createSubscriptionResult.IsError)
+        {
+            return Problem();
+        }
         
-        var response = new SubscriptionResponse(subscriptionId, request.SubscriptionType);
+        var response = new SubscriptionResponse(createSubscriptionResult.Value, request.SubscriptionType);
         return Ok(response);
     }
 }
