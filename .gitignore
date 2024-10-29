@@ -1,0 +1,9 @@
+
+/GymManagement.Api/bin
+/GymManagement.Api/obj
+/GymManagement.Application/bin
+/GymManagement.Application/obj
+/GymManagement.Infrastructure/obj
+/GymManagement.Infrastructure/bin
+/GymManagement.Domain/obj
+/GymManagement.Domain/bin
