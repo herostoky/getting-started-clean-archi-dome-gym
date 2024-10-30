@@ -2,12 +2,21 @@
 
 namespace GymManagement.Domain.Subscriptions;
 
-public class Subscription(SubscriptionType type, Guid adminId, Guid? id = null)
+public class Subscription
 {
-    private readonly Guid _adminId = adminId;
+    private readonly Guid _adminId;
+    public const string AdminIdFieldName = nameof(_adminId);
     
-    [Key]
-    public Guid Id { get; set; } = id ?? Guid.NewGuid();
+    public Guid Id { get; private set; }
 
-    public SubscriptionType Type { get; set; } = type;
+    public SubscriptionType Type { get; private set; }
+
+    public Subscription(SubscriptionType type, Guid adminId, Guid? id = null)
+    {
+        _adminId = adminId;
+        Id = id ?? Guid.NewGuid();
+        Type = type;
+    }
+    private Subscription()
+    { }
 }
