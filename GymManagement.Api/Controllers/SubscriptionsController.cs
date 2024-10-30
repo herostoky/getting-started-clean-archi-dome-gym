@@ -33,7 +33,7 @@ public class SubscriptionsController(ISender requestSender)
         return subscriptionResult.MatchFirst(
             subscription => Ok(new SubscriptionResponse
                 (subscription.Id, 
-                    Enum.Parse<SubscriptionType>(subscription.Type))),
+                    Enum.Parse<SubscriptionType>(subscription.Type.ToString()))),
             error => Problem(error.Description)
         );
     }
